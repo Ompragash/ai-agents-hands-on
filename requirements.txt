@@ -1,0 +1,11 @@
+agno==2.0.10
+groq==0.31.1
+ddgs==9.6.0
+duckduckgo-search==8.1.1
+sqlalchemy==2.0.43
+psycopg[binary]==3.2.10
+google-genai==1.39.0
+pgvector==0.4.1
+pypdf==6.1.0
+huggingface-hub==0.35.1
+youtube-transcript-api==1.2.2

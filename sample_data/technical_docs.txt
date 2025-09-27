@@ -1,0 +1,248 @@
+ACME Corporation Technical Documentation
+========================================
+
+API Reference Guide
+-------------------
+
+Authentication:
+All API requests require authentication using API keys. Include your API key in the Authorization header:
+Authorization: Bearer YOUR_API_KEY
+
+Rate Limiting:
+- Free tier: 100 requests per hour
+- Pro tier: 1,000 requests per hour
+- Enterprise tier: 10,000 requests per hour
+
+Base URL: https://api.acme.com/v1
+
+User Management API
+-------------------
+
+GET /users
+Returns a list of all users in the system.
+
+Parameters:
+- page (optional): Page number for pagination (default: 1)
+- limit (optional): Number of users per page (default: 20, max: 100)
+- status (optional): Filter by user status (active, inactive, pending)
+
+Response:
+{
+  "users": [...],
+  "total": 150,
+  "page": 1,
+  "limit": 20
+}
+
+POST /users
+Creates a new user account.
+
+Required fields:
+- email: Valid email address
+- password: Minimum 8 characters
+- first_name: User's first name
+- last_name: User's last name
+
+Optional fields:
+- role: User role (default: 'user')
+- department: User's department
+
+GET /users/{id}
+Retrieves details for a specific user.
+
+PUT /users/{id}
+Updates an existing user. Only provided fields will be updated.
+
+DELETE /users/{id}
+Deactivates a user account (soft delete).
+
+Project Management API
+----------------------
+
+GET /projects
+Lists all projects the authenticated user has access to.
+
+Parameters:
+- status: Filter by project status (active, completed, archived)
+- team: Filter by team ID
+- created_after: ISO date string
+
+POST /projects
+Creates a new project.
+
+Required fields:
+- name: Project name
+- description: Project description
+- team_id: ID of the assigned team
+
+Optional fields:
+- deadline: Project deadline (ISO date)
+- priority: Priority level (low, medium, high, critical)
+- budget: Project budget in USD
+
+GET /projects/{id}/tasks
+Retrieves all tasks for a specific project.
+
+POST /projects/{id}/tasks
+Creates a new task within a project.
+
+Task fields:
+- title: Task title (required)
+- description: Task description
+- assignee_id: User ID of task assignee
+- due_date: Task due date
+- priority: Task priority (low, medium, high)
+- estimated_hours: Estimated completion time
+
+Database Schema
+---------------
+
+Users Table:
+- id (PRIMARY KEY, UUID)
+- email (UNIQUE, NOT NULL)
+- password_hash (NOT NULL)
+- first_name (NOT NULL)
+- last_name (NOT NULL)
+- role (DEFAULT 'user')
+- department
+- status (DEFAULT 'active')
+- created_at (TIMESTAMP)
+- updated_at (TIMESTAMP)
+
+Projects Table:
+- id (PRIMARY KEY, UUID)
+- name (NOT NULL)
+- description (TEXT)
+- team_id (FOREIGN KEY)
+- status (DEFAULT 'active')
+- deadline (DATE)
+- priority (DEFAULT 'medium')
+- budget (DECIMAL)
+- created_by (FOREIGN KEY to users.id)
+- created_at (TIMESTAMP)
+- updated_at (TIMESTAMP)
+
+Tasks Table:
+- id (PRIMARY KEY, UUID)
+- project_id (FOREIGN KEY to projects.id)
+- title (NOT NULL)
+- description (TEXT)
+- assignee_id (FOREIGN KEY to users.id)
+- status (DEFAULT 'todo')
+- priority (DEFAULT 'medium')
+- due_date (DATE)
+- estimated_hours (INTEGER)
+- actual_hours (INTEGER)
+- created_at (TIMESTAMP)
+- completed_at (TIMESTAMP)
+
+Error Codes
+-----------
+
+HTTP Status Codes:
+- 200: Success
+- 201: Created successfully
+- 400: Bad request (validation error)
+- 401: Unauthorized (invalid/missing API key)
+- 403: Forbidden (insufficient permissions)
+- 404: Resource not found
+- 429: Rate limit exceeded
+- 500: Internal server error
+
+Common Error Response Format:
+{
+  "error": {
+    "code": "VALIDATION_ERROR",
+    "message": "Invalid input data",
+    "details": {
+      "email": "Email format is invalid",
+      "password": "Password must be at least 8 characters"
+    }
+  }
+}
+
+SDK Examples
+------------
+
+Python SDK:
+```python
+import acme_sdk
+
+client = acme_sdk.Client(api_key="your_api_key")
+
+# Create a user
+user = client.users.create({
+    "email": "john.doe@example.com",
+    "password": "securepassword",
+    "first_name": "John",
+    "last_name": "Doe"
+})
+
+# List projects
+projects = client.projects.list(status="active")
+
+# Create a task
+task = client.projects.create_task(project_id, {
+    "title": "Implement user authentication",
+    "assignee_id": user.id,
+    "priority": "high"
+})
+```
+
+JavaScript SDK:
+```javascript
+const AcmeSDK = require('@acme/sdk');
+
+const client = new AcmeSDK('your_api_key');
+
+// Async/await usage
+const users = await client.users.list({ status: 'active' });
+
+// Promise usage
+client.projects.create({
+    name: 'New Website',
+    description: 'Company website redesign',
+    team_id: 'team-123'
+}).then(project => {
+    console.log('Project created:', project.id);
+});
+```
+
+Webhook Configuration
+--------------------
+
+ACME API supports webhooks for real-time notifications.
+
+Supported Events:
+- user.created
+- user.updated
+- user.deleted
+- project.created
+- project.updated
+- project.completed
+- task.created
+- task.updated
+- task.completed
+
+Webhook Setup:
+1. Configure webhook URL in your account settings
+2. Verify webhook endpoint with challenge response
+3. Handle webhook events in your application
+
+Webhook Payload Example:
+{
+  "event": "task.completed",
+  "timestamp": "2024-01-15T10:30:00Z",
+  "data": {
+    "task_id": "task-456",
+    "project_id": "project-123",
+    "assignee_id": "user-789",
+    "completed_at": "2024-01-15T10:29:45Z"
+  }
+}
+
+Security Best Practices:
+- Verify webhook signatures
+- Use HTTPS endpoints only
+- Implement idempotency for webhook handling
+- Store webhook secrets securely

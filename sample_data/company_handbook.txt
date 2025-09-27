@@ -1,0 +1,110 @@
+ACME Corporation Employee Handbook
+===================================
+
+Company Overview
+-----------------
+ACME Corporation was founded in 1985 and is a leading provider of innovative technology solutions. Our headquarters is located in San Francisco, California, with additional offices in New York, Austin, and Seattle.
+
+Mission Statement: To deliver cutting-edge technology that empowers businesses to achieve their goals.
+Values: Innovation, Integrity, Collaboration, Customer Focus
+
+Work Policies
+-------------
+
+Working Hours:
+- Standard work week: Monday to Friday, 9:00 AM to 5:00 PM PST
+- Flexible hours available with manager approval
+- Core collaboration hours: 10:00 AM to 3:00 PM PST (all team members should be available)
+
+Remote Work Policy:
+- Hybrid work model: 3 days in office, 2 days remote per week
+- Fully remote work available for certain roles with approval
+- Home office stipend: $1,000 annually for remote workers
+
+Time Off Policies:
+- Vacation Days: 20 days per year for new employees, increases to 25 days after 3 years
+- Sick Leave: 10 days per year
+- Personal Days: 5 days per year
+- Holidays: 12 company holidays including New Year's Day, Independence Day, Thanksgiving, and Christmas
+
+Benefits
+--------
+
+Health Insurance:
+- Medical: Company pays 90% of premium for employee, 70% for family
+- Dental: Company pays 100% of premium for employee, 80% for family
+- Vision: Company pays 100% of premium for employee and family
+
+Retirement:
+- 401(k) plan with 6% company match
+- Vesting schedule: 25% after 1 year, 100% after 4 years
+- Financial planning resources available
+
+Professional Development:
+- Annual learning budget: $2,000 per employee
+- Conference attendance encouraged with manager approval
+- Internal mentorship program
+- Tuition reimbursement up to $5,000 per year for job-related education
+
+Technology
+----------
+
+Equipment Policy:
+- Laptop refresh cycle: Every 3 years
+- Choice between MacBook Pro or Dell XPS for developers
+- Monitor allowance: Up to $800 for home office setup
+- Software licenses provided as needed
+
+IT Support:
+- Help desk available Monday-Friday, 8:00 AM to 6:00 PM PST
+- Emergency support available 24/7 for critical issues
+- Ticketing system: support.acme.com
+
+Security Policies:
+- Two-factor authentication required for all systems
+- VPN required for remote access
+- Regular security training mandatory
+- Password policy: Minimum 12 characters, updated every 90 days
+
+Code of Conduct
+---------------
+
+Professional Behavior:
+- Treat all colleagues with respect and dignity
+- Maintain confidentiality of company information
+- Avoid conflicts of interest
+- Report ethical concerns to HR or management
+
+Communication Guidelines:
+- Use professional language in all business communications
+- Respond to emails within 24 hours during business days
+- Schedule meetings considerately across time zones
+- Keep meetings productive and on-topic
+
+Performance Management
+----------------------
+
+Review Process:
+- Annual performance reviews in January
+- Mid-year check-ins in July
+- Quarterly goal setting and tracking
+- 360-degree feedback process for leadership roles
+
+Career Development:
+- Individual development plans created annually
+- Internal job posting policy: 48 hours before external posting
+- Cross-functional project opportunities encouraged
+- Leadership development track for high performers
+
+Contact Information
+-------------------
+
+HR Department: hr@acme.com | (555) 123-4567
+IT Support: support@acme.com | (555) 123-HELP
+Office Locations:
+- San Francisco HQ: 123 Tech Street, San Francisco, CA 94105
+- New York: 456 Business Ave, New York, NY 10001
+- Austin: 789 Innovation Blvd, Austin, TX 73301
+- Seattle: 321 Cloud Way, Seattle, WA 98101
+
+Emergency Contact: security@acme.com | (555) 911-HELP
