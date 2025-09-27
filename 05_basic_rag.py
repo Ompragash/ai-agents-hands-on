@@ -18,7 +18,7 @@ from agno.agent import Agent
 from agno.knowledge import Knowledge
 from agno.models.groq import Groq
 from agno.vectordb.pgvector import PgVector
-from agno.knowledge.embedder.sentence_transformer import SentenceTransformerEmbedder
+from agno.knowledge.embedder.huggingface import HuggingfaceCustomEmbedder
 
 # Load environment variables
 load_dotenv()
